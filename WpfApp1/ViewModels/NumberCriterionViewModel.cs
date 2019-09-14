@@ -5,9 +5,10 @@ namespace WpfApp1.ViewModels
 {
     public class NumberCriterionViewModel : CriterionViewModel
     {
-        public NumberCriterionViewModel()
+        public NumberCriterionViewModel(IEnumerable<SimpleItem<string>> properties)
         {
             Header = "Number";
+            Properties = properties;
         }
         public string Property { get; set; }
         public double Reference { get; set; }
@@ -22,7 +23,7 @@ namespace WpfApp1.ViewModels
             new SimpleItem<Comparison> { Text = "<=", Value = Comparison.LessThanOrEqual },
         };
 
-        public IEnumerable<SimpleItem<string>> Properties { get; set; }
+        public IEnumerable<SimpleItem<string>> Properties { get; }
 
         public override Criterion Inflate()
         {

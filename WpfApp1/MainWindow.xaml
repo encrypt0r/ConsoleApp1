@@ -168,24 +168,22 @@
 
                         <TextBox Text="{Binding Title}" />
                     </DockPanel>
-
-                    <StackPanel Orientation="Horizontal" Grid.Row="2">
-                        <ItemsControl ItemsSource="{Binding Buttons}">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal" />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Button Content="{Binding Text}" Margin="10, 0" Command="{Binding Value}" />
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </StackPanel>
+                    
+                    <ItemsControl ItemsSource="{Binding Criteria.Buttons}"  Grid.Row="2">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding Text}" Margin="10, 0" Command="{Binding Value}" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
 
                     <ScrollViewer HorizontalScrollBarVisibility="Hidden" Grid.Row="4">
-                        <ItemsControl x:Name="criteraPanel" ItemsSource="{Binding Items}" />
+                        <ItemsControl x:Name="criteraPanel" ItemsSource="{Binding Criteria}" />
                     </ScrollViewer>
                 </Grid>
             </GroupBox>
@@ -216,19 +214,22 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <StackPanel Orientation="Horizontal">
-                <Button x:Name="addCriterionButton" Content="Add criterion" Click="AddCriterionButton_Click">
-                    <Button.ContextMenu>
-                        <ContextMenu x:Name="addContextMenu">
-                            <MenuItem x:Name="boolCriterionMenuItem" Header="Boolean Criterion" Click="BoolCriterionMenuItem_Click" />
-                            <MenuItem x:Name="numebrCriterionMenuItem" Header="Number Criterion" Click="NumebrCriterionMenuItem_Click" />
-                            <MenuItem x:Name="orCriterionMenuItem" Header="Or Criterion" Click="OrCriterionMenuItem_Click" />
-                        </ContextMenu>
-                    </Button.ContextMenu>
-                </Button>
-            </StackPanel>
+            <ItemsControl ItemsSource="{Binding Criteria.Buttons}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding Text}" Margin="10, 0" Command="{Binding Value}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
 
-            <ContentPresenter x:Name="criteriaPane" Grid.Row="2" ContentTemplateSelector="{StaticResource templateSelector}" />
+            <ScrollViewer HorizontalScrollBarVisibility="Hidden" Grid.Row="4">
+                <ItemsControl x:Name="criteraPanel" ItemsSource="{Binding Criteria}" />
+            </ScrollViewer>
         </Grid>
 
         <Grid Grid.Column="2">
@@ -242,15 +243,15 @@
 
             <StackPanel x:Name="personPanel">
                 <TextBlock Text="Name: " Margin="0, 5, 0, 2" />
-                <TextBox Text="{Binding Name}" />
+                <TextBox Text="{Binding Person.Name}" />
 
                 <TextBlock Text="Age: " Margin="0, 5, 0, 2" />
-                <TextBox Text="{Binding Age}" />
+                <TextBox Text="{Binding Person.Age}" />
 
-                <CheckBox IsChecked="{Binding IsStudent}" Margin="0, 5" Content="Is Student" />
+                <CheckBox IsChecked="{Binding Person.IsStudent}" Margin="0, 5" Content="Is Student" />
 
                 <TextBlock Text="Department: " Margin="0, 5, 0, 2" />
-                <TextBox Text="{Binding DepartmentId}" />
+                <TextBox Text="{Binding Person.DepartmentId}" />
             </StackPanel>
 
             <TextBox x:Name="logTextBox" Grid.Row="2" AcceptsReturn="True" TextWrapping="Wrap" IsReadOnly="True" />

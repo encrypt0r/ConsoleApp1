@@ -60,9 +60,12 @@
     </Compile>
     <Compile Include="CriteriaTemplateSelector.cs" />
     <Compile Include="DelegateCommand.cs" />
+    <Compile Include="Person.cs" />
     <Compile Include="ViewModels\BooleanCriterionViewModel.cs" />
+    <Compile Include="ViewModels\CriterionCollection.cs" />
     <Compile Include="ViewModels\CriterionViewModel.cs" />
     <Compile Include="ViewModels\LookupCriterionViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\PropertyLookup.cs" />
     <Compile Include="ViewModels\TextCriterionViewModel.cs" />
     <Compile Include="ViewModels\NumberCriterionViewModel.cs" />
