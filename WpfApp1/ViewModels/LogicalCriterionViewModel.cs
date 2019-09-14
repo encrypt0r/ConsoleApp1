@@ -16,8 +16,6 @@ namespace WpfApp1.ViewModels
 
         public CriterionCollection Criteria { get; } = new CriterionCollection();
 
-        public ObservableCollection<CriterionViewModel> Items { get; } =
-            new ObservableCollection<CriterionViewModel>();
         public IEnumerable<PropertyInfo> Properties { get; }
     }
 
@@ -30,7 +28,7 @@ namespace WpfApp1.ViewModels
 
         public override Criterion Inflate()
         {
-            var children = Items.Select(c => c.Inflate());
+            var children = Criteria.Select(c => c.Inflate());
             return new OrCriterion(Title, children);
         }
     }
@@ -44,7 +42,7 @@ namespace WpfApp1.ViewModels
 
         public override Criterion Inflate()
         {
-            var children = Items.Select(c => c.Inflate());
+            var children = Criteria.Select(c => c.Inflate());
             return new AndCriterion(Title, children);
         }
     }
